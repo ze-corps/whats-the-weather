@@ -1,0 +1,31 @@
+# Rails
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
+/.bundle
+/db/*.sqlite3
+/db/*.sqlite3-journal
+/public/system
+/node_modules
+/yarn-error.log
+.byebug_history
+*.swp
+*.swo
+
+# Ignore credentials and secrets
+/config/master.key
+/config/credentials.yml.enc
+
+# dotenv
+.env*
+
+# macOS
+.DS_Store
+
+# VSCode
+.vscode/
+
+# Git
+*.orig
+

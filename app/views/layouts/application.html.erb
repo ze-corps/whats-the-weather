@@ -5,11 +5,22 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   </head>
 
   <body>
-    <%= yield %>
+    <header class="bg-blue-500">
+      <div class="bg-blue-500 text-center text-2xl p-8">
+        <h1 class="text-white">What's the Weather?</h1>
+        <p class="italic text-white"> Like today ....</p>
+      </div>
+    </header>
+    <div class="flex justify-center p-8">
+      <%= yield %>
+    </div>
+    
+    
   </body>
 </html>
