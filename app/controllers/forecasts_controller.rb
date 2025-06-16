@@ -8,10 +8,15 @@ class ForecastsController < ApplicationController
   def create
     @address = params[:address]
     geolocation = Weather::Geolocation.new(@address)
-    coordinates = geolocation.coordinates
+    @coordinates = geolocation.coordinates
+    zip = geolocation.zipcode
+    cache_key = "weather_#{zip}"
+    @from_cache = Rails.cache.exist?(cache_key)
 
-    forecast = Weather::Forecast.new(coordinates[0], coordinates[1])
-    @weather_data = forecast.fetch
+    @weather_data = Rails.cache.fetch(cache_key, expires_in: 30.minutes) do 
+      weather_forecast
+    end
+
     render :index
   rescue StandardError => e
     flash.now[:error] = e
@@ -24,5 +29,10 @@ class ForecastsController < ApplicationController
     params.permit(
       :address
     )
+  end
+
+  def weather_forecast
+    forecast = Weather::Forecast.new(@coordinates)
+    forecast.fetch
   end
 end

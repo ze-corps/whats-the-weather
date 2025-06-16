@@ -20,6 +20,7 @@ Rails.application.configure do
   # Enable/disable caching. By default caching is disabled.
   # Run rails dev:cache to toggle caching.
   if Rails.root.join("tmp/caching-dev.txt").exist?
+    config.cache_store = :file_store, "#{root}/tmp/cache/"
     config.action_controller.perform_caching = true
     config.action_controller.enable_fragment_cache_logging = true
 
@@ -28,7 +29,8 @@ Rails.application.configure do
       "Cache-Control" => "public, max-age=#{2.days.to_i}"
     }
   else
-    config.action_controller.perform_caching = false
+    config.cache_store = :file_store, "#{root}/tmp/cache/"
+    config.action_controller.perform_caching = true
 
     config.cache_store = :null_store
   end

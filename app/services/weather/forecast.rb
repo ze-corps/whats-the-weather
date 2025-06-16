@@ -9,9 +9,8 @@ module Weather
     BASE_URL = 'https://api.openweathermap.org'
     API_KEY  = ENV.fetch('OPENWEATHER_API_KEY')
 
-    def initialize(lat, lon)
-      @lat = lat
-      @lon = lon
+    def initialize(coordinates)
+      @lat, @lon = coordinates
     end
 
     def fetch
@@ -25,10 +24,6 @@ module Weather
       raise "API Error #{response.status}: #{response.body}" unless response.success?
 
       JSON.parse(response.body)
-    rescue Faraday::TimeoutError
-      raise 'Request to OpenWeatherMap timed out'
-    rescue Faraday::ConnectionFailed => e
-      raise "Connection to OpenWeatherMap failed: #{e.message}"
     rescue StandardError => e
       raise "Forecast error: #{e.message}"
     end

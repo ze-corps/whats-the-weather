@@ -14,5 +14,9 @@ module Weather
     def coordinates
       Geocoder.search(@address).first.coordinates
     end
+
+    def zipcode
+      Geocoder.search(@address).first.postal_code
+    end
   end
 end
