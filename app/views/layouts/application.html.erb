@@ -17,6 +17,11 @@
         <p class="italic text-white"> Like today ....</p>
       </div>
     </header>
+    <% if flash[:error] %>
+      <div class="flex justify-center p-8 bg-red-100 border border-red-400 text-red px-4 py-3 rounded" role="alert">
+         <strong class="text-red-700"> <%= flash[:error] %></strong>
+      </div>
+    <% end %>
     <div class="flex justify-center p-8">
       <%= yield %>
     </div>

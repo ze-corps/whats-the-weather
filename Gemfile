@@ -29,6 +29,9 @@ gem 'jbuilder'
 # Tailswind Css Gem 
 gem 'tailwindcss-rails', '~> 2.3'
 
+# geocoder 
+gem 'geocoder'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 
@@ -44,6 +47,18 @@ gem 'tzinfo-data', platforms: %i[mswin mswin64 mingw x64_mingw jruby]
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', require: false
 
+# Factorybot gem
+gem 'factory_bot'
+
+# Faker 
+gem 'faker'
+
+# dotenv for env files 
+gem 'dotenv'
+
+# faraday for api connection
+gem 'faraday', '~> 2.13', '>= 2.13.1'
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
@@ -52,6 +67,7 @@ group :development, :test do
   gem 'byebug'
   gem 'debug', platforms: %i[mri mswin mswin64 mingw x64_mingw]
   gem 'pry'
+  gem 'rspec-rails', '~> 6.1'
 end
 
 group :development do

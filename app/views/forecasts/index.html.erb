@@ -2,8 +2,15 @@
     <%= form_with url: forecasts_path, method: :post do %>
     <%= label_tag :address, "Enter Address:" %>
     <%= text_field_tag :address, nil, required: true %>
-    <%= submit_tag "Get Forecast" %>
+    <%= submit_tag("Get Forecast", :class=>"bg-blue-500 p-2 text-white") %>
     <% end %>
-
-    this is current temp at this address: <%= params[:address] %>
+    <% if @weather_data.present? %>
+        <div class="bg-sky-500 text-white rounded-md border-silver-500 m-8 p-10">
+            <h2>Forecast</h2>
+            <p> Current temp at this address: <%= params[:address] %> <%= @weather_data["main"]["temp"] %>°F </p>
+            <p>Condition: <%= @weather_data["weather"].first["description"] %></p>
+            <p>High:  <%= @weather_data["main"]["temp_max"] %>°F</p>
+            <p>Low:  <%= @weather_data["main"]["temp_min"] %>°F</p>
+        </div>
+    <% end %>
 </div>
