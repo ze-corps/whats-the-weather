@@ -1,11 +1,15 @@
-<div>
+<div class="justify-center">
+    <p>Please Enter the address for the Weather Forcast. You can use any of the following format</p>
+    <p> Denver, Colorado<p> 
+    <p>4162 Mutton Town Road, Seattle, WA</p>
+    <p>80122</p>
     <%= form_with url: forecasts_path, method: :post do %>
-    <%= label_tag :address, "Enter Address:" %>
+    <%= label_tag :address, "Enter Address:", :class=>"ml-8 mt-8 pl-10" %>
     <%= text_field_tag :address, nil, required: true %>
     <%= submit_tag("Get Forecast", :class=>"bg-blue-500 p-2 text-white") %>
     <% end %>
     <% if @weather_data.present? %>
-        <div class="bg-sky-500 text-white rounded-md border-silver-500 m-8 p-10">
+        <div class="bg-sky-500 text-white rounded-md border-silver-500 mt-8 p-10">
             <h2>Forecast</h2>
             <p> Current temp at this address: <%= params[:address] %> is <%= @weather_data["main"]["temp"] %>°F </p>
             <p>Condition: <%= @weather_data["weather"].first["description"] %></p>
